@@ -1,0 +1,22 @@
+apply plugin:"java"
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+/*
+
+However, our app project doesn't yet know anything about our
+library. What we really need to do is declare a compile dependency on the
+output of this project. To do that, we need to add this Gradle project to the
+same multi-project build as the app. Let's head over to the settings.gradle
+file in the project root.
+
+*/
