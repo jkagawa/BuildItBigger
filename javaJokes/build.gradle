@@ -1,8 +1,10 @@
-apply plugin:"java"
+apply plugin: 'java-library'
 
-repositories {
-    jcenter()
-}
+//apply plugin:"java"
+
+//repositories {
+//    jcenter()
+//}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
