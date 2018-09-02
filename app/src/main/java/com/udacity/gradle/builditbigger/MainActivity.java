@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -96,15 +97,20 @@ public class MainActivity extends AppCompatActivity {
             try {
                 return myApiService.sayJoke().execute().getData();
             } catch (IOException e) {
-                return e.getMessage();
+//              return e.getMessage();
+
+                Log.e("Jokes", e.getMessage(), e);
+                return null;
             }
         }
 
         @Override
         protected void onPostExecute(String result) {
-            Intent intent = new Intent(MainActivity.this, com.udacity.gradle.androidlibrary.AndroidJokeActivity.class);
-            intent.putExtra(EXTRA_JOKES, result);
-            startActivity(intent);
+            if(result != null) {
+                Intent intent = new Intent(MainActivity.this, com.udacity.gradle.androidlibrary.AndroidJokeActivity.class);
+                intent.putExtra(EXTRA_JOKES, result);
+                startActivity(intent);
+            }
         }
     }
 
